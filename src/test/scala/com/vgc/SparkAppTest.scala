@@ -5,9 +5,9 @@ import com.vgc.SparkApp
 import org.junit.jupiter.api.Assertions._
 
 
-class AppTest {
-  @Test private[vgc] def appHasAGreeting(): Unit = {
-    val classUnderTest = SparkApp
-    assertNotNull(classUnderTest.getGreeting, "app should have a greeting")
+class AppTest extends InitSpark {
+  @Test private[vgc] def appGetDS(): Unit = {
+    val app = SparkApp
+    assertEquals(app.getDS().count(),12, "ds should get 12 records")
   }
 }

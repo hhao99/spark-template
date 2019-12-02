@@ -1,13 +1,16 @@
 package com.vgc
+import org.apache.spark.sql._
 
-object SparkApp {
+object SparkApp extends InitSpark {
 
-    def getGreeting(): String = {
-        "Hello World"
+    def getDS():DataFrame = {
+        val file = "file:///c:/data/r1.json"
+        val df = reader.json(file)
+        df
     }
 
 
     def main(args: Array[String]) {
-        println(getGreeting())
+        println(getDS().count())
     }
 }
