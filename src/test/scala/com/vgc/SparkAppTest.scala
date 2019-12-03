@@ -19,4 +19,11 @@ class AppTest extends InitSpark {
     val step_info = bsDF.filter( $"step" === '1' )
     assertEquals(step_info.count() ,2, "step should get 2 records")
   }
+
+  @Test private[vgc] def testVehicleInfo(): Unit = {
+    val vin = "LFV0A24G1J3951039"
+    val app = SparkApp
+    assertEquals(app.getVehcileInfo(vin).brand, "AUDI",
+    "Expected brand ADUI_FAW")
+  }
 }
